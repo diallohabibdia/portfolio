@@ -1,21 +1,156 @@
+/* Import Tailwind utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Définition des variables de couleurs */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #151120;
+  --primary: #2563eb;
+  --secondary: #4b5563;
+  --accent: #9333ea;
+  --footerBackground: #151120;
 }
 
+/* Mode sombre */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #151120;
     --foreground: #ededed;
+    --primary: #60a5fa;
+    --secondary: #9ca3af;
+    --accent: #c084fc;
+    --footerBackground: #2c204e;
   }
 }
 
+/* Style global du body */
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Contenu principal (prend tout l'espace entre la navbar et le footer) */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Style de la navigation */
+.navbar {
+  background-color: var(--background);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.navbar a {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--primary);
+}
+
+/* Boutons stylisés */
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* Pied de page */
+.footer {
+  background-color: var(--footerBackground);
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  font-size: 24px;
+  color: var(--secondary);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: var(--primary);
+  transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .button {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+

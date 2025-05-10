@@ -1,0 +1,13 @@
+.logoContainer {
+  display: flex;
+  align-items: center; /* Centre verticalement */
+  justify-content: center; /* Centre horizontalement */
+  height: 100px; /* Hauteur fixe pour éviter qu'il soit collé en haut */
+  padding: 10px 20px; /* Espacement interne */
+}
+
+.logoImage {
+  max-width: 200px;
+  height: auto;
+  vertical-align: middle; /* Aligne avec le menu */
+}

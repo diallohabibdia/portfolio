@@ -1,0 +1,102 @@
+.skillsSection {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .cvButtonContainer {
+    margin-bottom: 20px;
+  }
+  
+  .cvButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .cvButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .skillsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .skillBox {
+    background: white;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .skillBox:hover {
+    transform: translateY(-5px);
+  }
+  
+  .skillHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .skillTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .icon {
+    font-size: 20px;
+  }
+  
+  .skillDetails {
+    padding: 15px;
+  }
+  
+  .skillItem {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .progressBar {
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progressFill {
+    height: 100%;
+    background: #007bff;
+  }
+  

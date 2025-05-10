@@ -1,0 +1,102 @@
+"use client";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import styles from "./Contact.module.css";
+import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+
+export default function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const [messageSent, setMessageSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    setErrorMessage(""); // Réinitialiser le message d'erreur
+    try {
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,  // Service ID depuis l'env
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, // Template ID depuis l'env
+        {
+          from_name: data.name,        // Nom de l'expéditeur
+          from_email: data.email,      // Email de l'expéditeur
+          subject: data.subject,       // Sujet du message
+          message: data.message,       // Message de l'expéditeur
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID // User ID (clé publique) depuis l'env
+      );
+
+      console.log("SUCCESS!", result.text);
+      setMessageSent(true);
+      reset(); // Réinitialiser les champs du formulaire
+      setTimeout(() => setMessageSent(false), 5000); // Message de succès disparaît après 5 secondes
+    } catch (error) {
+      console.error("FAILED...", error);
+      setErrorMessage("Erreur d’envoi du message. Veuillez réessayer plus tard.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <h2 className={styles.title}>Me contacter</h2>
+
+      <div className={styles.contactContent}>
+        <div className={styles.contactInfo}>
+          <p><FaPhoneAlt className={styles.icon} /> <strong>Appeler</strong><br />+1 581-447-5890</p>
+          <p><FaEnvelope className={styles.icon} /> <strong>Courriel</strong><br />diallohabibdia@gmail.com</p>
+        </div>
+
+        <div className={styles.contactForm}>
+          <h3 className={styles.subtitle}>Envoyez-moi un courriel</h3>
+
+          {messageSent && <p className={styles.success}>Message envoyé avec succès ! ✅</p>}
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Votre nom*"
+              {...register("name", { required: "Le nom est requis." })}
+              className={styles.input}
+            />
+            {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+
+            <input
+              type="text"
+              placeholder="Objet du message"
+              {...register("subject")}
+              className={styles.input}
+            />
+
+            <input
+              type="email"
+              placeholder="Votre adresse courriel*"
+              {...register("email", { required: "L'email est requis." })}
+              className={styles.input}
+            />
+            {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+
+            <textarea
+              placeholder="Message*"
+              {...register("message", { required: "Le message est requis." })}
+              className={styles.textarea}
+            ></textarea>
+            {errors.message && <p className={styles.error}>{errors.message.message}</p>}
+
+            <button type="submit" className={styles.button} disabled={loading}>
+              {loading ? "Envoi en cours..." : "Envoyer message ➤"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}

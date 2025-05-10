@@ -1,0 +1,50 @@
+[
+	{
+		"id": 1,
+		"date": "Sunday, 12 April | 10:00 am",
+		"title": "Event Conference 2025",
+		"location": "Toronto, Ontario",
+		"description": "Une conférence annuelle réunissant des experts en technologie et en innovation pour discuter des tendances émergentes.",
+		"imageUrl": "/events/event1.jpg"
+	},
+	{
+		"id": 2,
+		"date": "Monday, 20 May | 3:00 pm",
+		"title": "Tech Summit 2025",
+		"location": "Vancouver, British Columbia",
+		"description": "Un sommet technologique mettant en avant les avancées en intelligence artificielle et en développement logiciel.",
+		"imageUrl": "/events/event2.jpg"
+	},
+	{
+		"id": 3,
+		"date": "Wednesday, 5 June | 9:00 am",
+		"title": "AI & Machine Learning Expo",
+		"location": "Montreal, Quebec",
+		"description": "Une exposition immersive explorant les innovations en intelligence artificielle et apprentissage automatique.",
+		"imageUrl": "/events/event3.jpg"
+	},
+	{
+		"id": 4,
+		"date": "Saturday, 15 July | 11:30 am",
+		"title": "Startup Pitch Day",
+		"location": "Calgary, Alberta",
+		"description": "Une journée dédiée aux startups pour présenter leurs projets devant des investisseurs et experts du domaine.",
+		"imageUrl": "/events/event4.jpg"
+	},
+	{
+		"id": 5,
+		"date": "Friday, 8 September | 2:00 pm",
+		"title": "Blockchain & Web3 Meetup",
+		"location": "Ottawa, Ontario",
+		"description": "Un événement de réseautage pour discuter des dernières avancées en blockchain, crypto-monnaies et Web3.",
+		"imageUrl": "/events/event5.jpg"
+	},
+	{
+		"id": 6,
+		"date": "Tuesday, 14 November | 6:00 pm",
+		"title": "Cybersecurity Conference",
+		"location": "Edmonton, Alberta",
+		"description": "Une conférence abordant les défis actuels en cybersécurité et les stratégies de protection des données.",
+		"imageUrl": "/events/event6.jpg"
+	}
+]
