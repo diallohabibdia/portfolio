@@ -1,33 +1,3 @@
-/* ---- VARIABLES GÉNÉRALES ---- */
-
-/* Par défaut : thème clair */
-:root {
-  --bg-color: white;
-  --text-color: black;
-  --input-bg: #fff;
-  --input-border: #ccc;
-  --button-bg: #0070f3;
-  --button-hover: #005bb5;
-  --error-color: red;
-  --success-color: green;
-}
-
-/* Si l'appareil est en mode sombre */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #1e1e1e;
-    --text-color: #f0f0f0;
-    --input-bg: #2c2c2c;
-    --input-border: #555;
-    --button-bg: #3399ff;
-    --button-hover: #267acc;
-    --error-color: #ff6b6b;
-    --success-color: #48e88f;
-  }
-}
-
-/* ---- STYLES DU COMPOSANT ---- */
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -118,7 +88,6 @@
 }
 
 /* ---- RESPONSIVE ---- */
-
 @media (max-width: 768px) {
   .contactContent {
     flex-direction: column;
