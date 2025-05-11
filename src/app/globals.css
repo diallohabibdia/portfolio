@@ -39,14 +39,14 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Contenu principal (prend tout l'espace entre la navbar et le footer) */
+/* Contenu principal */
 .content {
   flex: 1;
   padding: 20px;
   overflow-x: hidden;
 }
 
-/* Style de la navigation */
+/* Navigation */
 .navbar {
   background-color: var(--background);
   padding: 15px 20px;
@@ -70,7 +70,7 @@ body {
   color: var(--primary);
 }
 
-/* Boutons stylisés */
+/* Boutons */
 .button {
   display: inline-block;
   padding: 12px 20px;
@@ -98,7 +98,7 @@ body {
   font-size: 16px;
 }
 
-/* Social Media Icons */
+/* Icônes réseaux sociaux */
 .social-icons {
   display: flex;
   gap: 12px;
@@ -154,3 +154,20 @@ body {
   }
 }
 
+/* Champs de formulaire adaptables aux thèmes */
+input,
+textarea,
+.Contact_input,
+.Contact_textarea {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--secondary);
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Messages d'erreur */
+.Contact_error {
+  color: #ff6b6b;
+}
