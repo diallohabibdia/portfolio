@@ -1,29 +1,5 @@
-/* === THÈME PAR DÉFAUT (clair) === */
-:root {
-    --bg-color: #ffffff;
-    --text-color: #1a202c;
-    --secondary-text: #4a5568;
-    --border-color: #e2e8f0;
-    --hover-color: #3182ce;
-    --hover-text: #2b6cb0;
-    --image-shadow: rgba(0, 0, 0, 0.1);
-  }
-  
-  /* === THÈME SOMBRE === */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-color: #1a202c;
-      --text-color: #f7fafc;
-      --secondary-text: #a0aec0;
-      --border-color: #2d3748;
-      --hover-color: #63b3ed;
-      --hover-text: #4299e1;
-      --image-shadow: rgba(255, 255, 255, 0.1);
-    }
-  }
-  
-  /* === CONTENEUR PRINCIPAL === */
-  .container {
+/* === CONTENEUR PRINCIPAL === */
+.container {
     max-width: 768px;
     margin: 0 auto;
     padding: 2rem;
@@ -111,3 +87,4 @@
   .githubIcon {
     margin-right: 0.5rem;
   }
+  
