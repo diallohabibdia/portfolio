@@ -1,23 +1,18 @@
-"use client";
-import React from "react";
-import styles from "./MenuItem.module.css";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import styles from "./Menu.module.css";
 
-const MenuItem = (props) => {
-	const { label, path, onClick } = props;
-	const activePath = usePathname();
-	const isActive = activePath === path;
-
-	return (
-		<li
-			onClick={onClick}
-			className={`${styles.menuItem} ${isActive && styles.active}`}
-			style={{ background: isActive && styles.active }}
-		>
-			<Link href={path}>{label}</Link>
-		</li>
-	);
+const MenuItem = ({ label, path, isActive, onClick }) => {
+  return (
+    <li className={styles.mobileMenuItem}>
+      <Link
+        href={path}
+        onClick={onClick}
+        className={`${styles.menuLink} ${isActive ? styles.active : ""}`}
+      >
+        {label}
+      </Link>
+    </li>
+  );
 };
 
 export default MenuItem;

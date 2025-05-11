@@ -9,7 +9,7 @@ const ProfilePage = () => {
 
       {/* Présentation */}
       <p className="text-lg text-center max-w-2xl leading-relaxed">
-        Étudiant en dernière année en programmation, passionné par le développement logiciel 
+        Diplomé en programmation informatique, passionné par le développement logiciel 
         et les nouvelles technologies. Curieux et motivé, j’ai acquis de solides compétences en 
         <strong> développement web et mobile (React, Next.js, Java, Kotlin, C#) </strong> à travers mes études 
         et projets académiques. Capable d’apprendre rapidement, je suis à l’aise en travail d’équipe 

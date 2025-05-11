@@ -4,34 +4,30 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Menu.module.css";
-import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import MenuItem from "./MenuItem";
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState("FR");
-  const pathname = usePathname(); // Récupérer l'URL actuelle
+  const [isMobile, setIsMobile] = useState(null);
+  const pathname = usePathname();
 
-  // Charger les préférences utilisateur (mode sombre + langue)
   useEffect(() => {
-    const storedDarkMode = localStorage.getItem("darkMode") === "true";
-    const storedLanguage = localStorage.getItem("language") || "FR";
+    const checkIfMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (!mobile) setOpen(false); // Ferme le menu si on passe en desktop
+    };
 
-    setDarkMode(storedDarkMode);
-    setLanguage(storedLanguage);
-    document.documentElement.classList.toggle("dark-mode", storedDarkMode);
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+    return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  // Mettre à jour la classe du dark mode à chaque changement
   useEffect(() => {
-    document.documentElement.classList.toggle("dark-mode", darkMode);
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("darkMode", newMode);
-  };
+    const storedLanguage = localStorage.getItem("language") || "FR";
+    setLanguage(storedLanguage);
+  }, []);
 
   const toggleLanguage = () => {
     const newLang = language === "FR" ? "EN" : "FR";
@@ -49,37 +45,97 @@ const Menu = () => {
     { label: language === "FR" ? "Contact" : "Contact", path: "/contact" },
   ];
 
+  if (isMobile === null) return null;
+
   return (
     <>
-      {/* Bouton menu mobile */}
-      <button className={styles.menuButton} onClick={() => setOpen(!open)}>
-        {open ? <XMarkIcon className="w-8 h-8 text-white" /> : <Bars3Icon className="w-8 h-8 text-white" />}
-      </button>
+      {/* Header avec logo et bouton burger */}
+      <header className={styles.header}>
+        <Link href="/" className={styles.logoLink}>
+          <Image
+            src="/images/monLogo.png"
+            alt="Logo"
+            width={40}
+            height={40}
+            priority
+          />
+        </Link>
 
-      {/* Menu principal */}
-      <nav className={`${styles.menu} ${open ? styles.open : ""}`}>
-        <ul className={styles.menuList}>
-          {links.map((link, index) => (
-            <li key={index} className={styles.menuItem} onClick={() => open && setOpen(false)}>
-              {link.isImage ? (
-                <Link href={link.path}>
-                  <Image src={link.src} alt="Logo" width={50} height={50} />
-                </Link>
-              ) : (
-                <Link href={link.path} className={`${styles.menuLink} ${pathname.startsWith(link.path) ? styles.active : ""}`}>
-                  {link.label}
-                </Link>
-              )}
-            </li>
-          ))}
-          {/* Mode sombre */}
-          <li className={styles.menuItem} onClick={toggleDarkMode}>
-            {darkMode ? <SunIcon className="w-6 h-6 text-yellow-500" /> : <MoonIcon className="w-5 h-5 text-gray-800" />}
-          </li>
-          {/* Changement de langue */}
-          <li className={styles.menuItem} onClick={toggleLanguage}>{language}</li>
-        </ul>
-      </nav>
+        {/* Menu Desktop */}
+        {!isMobile && (
+          <nav className={styles.desktopNav}>
+            <ul className={styles.desktopMenu}>
+              {links.map((link, index) => (
+                <li key={index} className={styles.menuItem}>
+                  {link.isImage ? null : (
+                    <Link
+                      href={link.path}
+                      className={`${styles.menuLink} ${
+                        pathname === link.path ? styles.active : ""
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+              <li className={styles.menuItem}>
+                <button
+                  className={styles.languageButton}
+                  onClick={toggleLanguage}
+                >
+                  {language}
+                </button>
+              </li>
+            </ul>
+          </nav>
+        )}
+
+        {/* Bouton Burger (mobile seulement) */}
+        {isMobile && (
+          <button
+            className={`${styles.burgerButton} ${open ? styles.open : ""}`}
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-label="Menu"
+          >
+            <span className={styles.burgerBar}></span>
+            <span className={styles.burgerBar}></span>
+            <span className={styles.burgerBar}></span>
+          </button>
+        )}
+      </header>
+
+      {/* Menu Mobile (déroulant) */}
+      {isMobile && (
+        <div className={`${styles.mobileMenuWrapper} ${open ? styles.open : ""}`}>
+          <div className={styles.mobileMenu}>
+            <nav>
+              <ul className={styles.mobileMenuList}>
+                {links
+                  .filter((link) => !link.isImage)
+                  .map((link, index) => (
+                    <MenuItem
+                      key={index}
+                      label={link.label}
+                      path={link.path}
+                      isActive={pathname === link.path}
+                      onClick={() => setOpen(false)}
+                    />
+                  ))}
+                <li className={styles.mobileMenuItem}>
+                  <button
+                    className={styles.languageButton}
+                    onClick={toggleLanguage}
+                  >
+                    {language}
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
     </>
   );
 };

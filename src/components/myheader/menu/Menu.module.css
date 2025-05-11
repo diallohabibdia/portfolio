@@ -1,84 +1,189 @@
-/* Styles de base */
-.menu {
-	position: fixed; /*  fixe */
-	width: 100%;
-	padding: 10px 20px;
+/* Header */
+.header {
 	display: flex;
-	justify-content: space-between; /* Sépare le logo et les liens */
+	justify-content: space-between;
 	align-items: center;
-	background-color: white; /* Initialiser la couleur du background */
-	transition: background-color 0.3s ease-in-out;
-}
-
-  
-
-  
-  .menu.dark-mode {
-	background-color: #1a1a1a;
+	padding: 1rem;
+	background: white;
+	position: relative;
+	z-index: 1000;
   }
   
-  /* Centrer la liste des liens */
-  .menuList {
+  /* Logo */
+  .logoLink {
+	z-index: 1001;
+  }
+  
+  /* Menu Desktop */
+  .desktopNav {
+	display: block;
+  }
+  
+  .desktopMenu {
 	display: flex;
-	gap: 20px;
+	gap: 1.5rem;
 	list-style: none;
-	margin: auto; /* Centrer la liste */
+	margin: 0;
+	padding: 0;
   }
   
   .menuItem {
-	cursor: pointer;
-	font-size: 1rem;
-	transition: color 0.3s ease;
-  }
-  
-  .menuItem:hover {
-	color: #007bff;
+	display: flex;
+	align-items: center;
   }
   
   .menuLink {
 	text-decoration: none;
-	color: inherit;
-	font-weight: bold;
+	color: #333;
+	font-weight: 500;
+	transition: color 0.3s;
+	padding: 0.5rem 0;
+	position: relative;
   }
   
-  /* Bouton Menu Mobile */
-  .menuButton {
+  .menuLink:hover,
+  .active {
+	color: #4c35f9;
+  }
+  
+  .menuLink::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: #4c35f9;
+	transition: width 0.3s;
+  }
+  
+  .menuLink:hover::after,
+  .active::after {
+	width: 100%;
+  }
+  
+  /* Bouton Burger */
+  .burgerButton {
 	display: none;
 	background: none;
 	border: none;
 	cursor: pointer;
+	z-index: 1001;
+	width: 30px;
+	height: 24px;
+	position: relative;
+	padding: 0;
   }
   
-  /* Responsive Mobile */
-  @media (max-width: 768px) {
-	.menu {
-	  flex-direction: column;
-	  align-items: center; /* Centrer en mobile */
-	  padding: 15px;
-	}
+  .burgerBar {
+	display: block;
+	width: 100%;
+	height: 3px;
+	background: #333;
+	position: absolute;
+	left: 0;
+	transition: all 0.3s ease;
+  }
   
-	.menuList {
-	  flex-direction: column;
-	  gap: 10px;
+  .burgerBar:nth-child(1) {
+	top: 0;
+  }
+  .burgerBar:nth-child(2) {
+	top: 50%;
+	transform: translateY(-50%);
+  }
+  .burgerBar:nth-child(3) {
+	bottom: 0;
+  }
+  
+  .burgerButton.open .burgerBar:nth-child(1) {
+	transform: translateY(10px) rotate(45deg);
+  }
+  .burgerButton.open .burgerBar:nth-child(2) {
+	opacity: 0;
+  }
+  .burgerButton.open .burgerBar:nth-child(3) {
+	transform: translateY(-10px) rotate(-45deg);
+  }
+  
+  /* Menu Mobile */
+  .mobileMenuWrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+  }
+  
+  .mobileMenuWrapper.open {
+	opacity: 1;
+	visibility: visible;
+  }
+  
+  .mobileMenu {
+	position: absolute;
+	top: 70px;
+	right: 20px;
+	background: white;
+	width: 250px;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	padding: 1rem;
+	transform: translateY(-20px);
+	transition: transform 0.3s ease;
+  }
+  
+  .mobileMenuWrapper.open .mobileMenu {
+	transform: translateY(0);
+  }
+  
+  .mobileMenuList {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+  }
+  
+  .mobileMenuItem {
+	padding: 0.75rem 1rem;
+	border-radius: 4px;
+	transition: background 0.2s;
+  }
+  
+  .mobileMenuItem:hover {
+	background: #f5f5f5;
+  }
+  
+  /* Bouton langue */
+  .languageButton {
+	background: #f0f0f0;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	cursor: pointer;
+	font-weight: 500;
+	transition: all 0.3s;
+  }
+  
+  .languageButton:hover {
+	background: #4c35f9;
+	color: white;
+  }
+  
+  /* Responsive */
+  @media (max-width: 767px) {
+	.desktopNav {
 	  display: none;
-	  align-items: center; /* Centrer les liens en mobile */
 	}
-  
-	.menu.open .menuList {
-	  display: flex;
-	}
-  
-	.menuButton {
+	
+	.burgerButton {
 	  display: block;
-	  position: absolute;
-	  right: 20px;
-	  top: 15px;
 	}
-  }
-  
-  /* Style spécial pour la page active */
-.active {
-	background-color: #ffffff; /* Couleur de fond */
-	color: #5d88e3 !important; /* Texte en bleu */
-	font-weight: bold;
   }

@@ -1,22 +1,22 @@
+/* MenuItem.module.css */
+
 .menuItem {
-	padding: 0px;
+	padding: 10px;
 	cursor: pointer;
 	transition: background-color 0.3s;
-	border-radius: 5px;
-}
-/* Appliquer le hover uniquement sur le <a> */
-.menuItem a:hover {
-	background-color: #8f9ef4;
-}
-/* Style du lien */
-.menuItem a {
-	display: block; /* Assure que le lien occupe tout l'espace cliquable */
-	padding: 5px 10px;
+  }
+  
+  .menuItem a {
 	text-decoration: none;
-	color: #ffffff;
-	border-radius: 5px;
-}
-/* Style du lien actif */
-.menuItem.active a {
-	background-color: #8f9ef4 !important;
-}
+	color: inherit;
+  }
+  
+  .menuItem:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .active {
+	background-color: #4c35f9; /* Exemple de couleur de fond pour l'élément actif */
+	color: white; /* Couleur du texte de l'élément actif */
+  }
+  

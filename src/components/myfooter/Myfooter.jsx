@@ -13,11 +13,7 @@ export default function Footer() {
           <a href="#portfolio">Portfolio</a>
           <a href="#contact">Contact</a>
         </div>
-        <div className={styles.right}>
-          <FaFacebookF className={styles.icon} />
-          <FaInstagram className={styles.icon} />
-          <FaTwitter className={styles.icon} />
-        </div>
+        
       </div>
       
     </footer>
