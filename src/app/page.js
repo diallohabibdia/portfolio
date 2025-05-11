@@ -34,7 +34,19 @@ export default function Home() {
         "Diplômé en programmation informatique, passionné par le développement web et mobile.",
       explore: "Explorer",
     },
-    
+    en: {
+      accueil: "Home",
+      profil: "Profile",
+      competences: "Skills",
+      experience: "Experience",
+      portfolio: "Portfolio",
+      contact: "Contact",
+      hello: "Hi, I'm",
+      role: "Full Stack Developer React & Next.js | Open to opportunities",
+      about:
+        "Graduated in computer programming, passionate about web and mobile development.",
+      explore: "Explore",
+    },
   };
 
   const sections = [
@@ -75,18 +87,18 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-gray-900">
-      <nav className="fixed top-0 left-0 w-full bg-white shadow-lg py-4 px-8 flex justify-between items-center z-50 transition-all">
+    <div className="flex flex-col items-center justify-center text-gray-900 dark:text-white bg-white dark:bg-gray-900 transition-colors duration-300">
+      <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-lg py-4 px-8 flex justify-between items-center z-50 transition-all">
         <Image src="/images/monLogo.png" alt="Logo" width={100} height={50} />
         <div className="flex gap-8">
           {sections.map((id) => (
             <button
               key={id}
               onClick={() => scrollToSection(id)}
-              className={`text-gray-700 hover:text-blue-600 transition font-medium ${
+              className={`transition font-medium ${
                 activeSection === id
                   ? "text-blue-600 border-b-2 border-blue-600"
-                  : ""
+                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600"
               }`}
             >
               {translations[language][id]}
@@ -102,7 +114,7 @@ export default function Home() {
           <select
             onChange={(e) => setLanguage(e.target.value)}
             value={language}
-            className="border rounded p-1"
+            className="border rounded p-1 bg-white dark:bg-gray-700 text-black dark:text-white"
           >
             <option value="fr">FR</option>
             <option value="en">EN</option>
@@ -110,9 +122,10 @@ export default function Home() {
         </div>
       </nav>
 
+      {/* SECTION ACCUEIL */}
       <section
         id="accueil"
-        className="w-full max-w-5xl bg-white p-10 mt-20 rounded-lg flex flex-col md:flex-row items-center"
+        className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center px-6"
       >
         <div className="relative flex flex-col items-center p-6">
           <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden shadow-md">
@@ -136,7 +149,7 @@ export default function Home() {
               href="https://github.com/diallohabibdia"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full text-gray-800 hover:bg-gray-800 hover:text-white transition duration-300 shadow-md"
+              className="p-3 rounded-full text-gray-800 dark:text-white hover:bg-gray-800 hover:text-white transition duration-300 shadow-md"
             >
               <FaGithub size={24} />
             </a>
@@ -156,10 +169,10 @@ export default function Home() {
             {translations[language].hello}{" "}
             <span className="text-blue-600">Habib !</span>
           </h1>
-          <p className="text-lg text-gray-700 mt-3">
+          <p className="text-lg text-gray-700 dark:text-gray-300 mt-3">
             {translations[language].role}
           </p>
-          <p className="text-gray-500 mt-5 leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 mt-5 leading-relaxed">
             {translations[language].about}
           </p>
           <div className="flex gap-4 mt-6">
@@ -192,19 +205,19 @@ export default function Home() {
         <span className="text-sm">⬇</span>
       </div>
 
-      <div id="profil" className="mt-16">
+      <div id="profil" className="mt-16 w-full max-w-5xl">
         <ProfilePage />
       </div>
-      <div id="competences" className="mt-16">
+      <div id="competences" className="mt-16 w-full max-w-5xl">
         <Skills />
       </div>
-      <div id="experience" className="mt-16">
+      <div id="experience" className="mt-16 w-full max-w-5xl">
         <Experience />
       </div>
-      <div id="portfolio" className="mt-16">
+      <div id="portfolio" className="mt-16 w-full max-w-5xl">
         <Portfolio />
       </div>
-      <div id="contact" className="mt-16">
+      <div id="contact" className="mt-16 w-full max-w-5xl">
         <Contact />
       </div>
     </div>

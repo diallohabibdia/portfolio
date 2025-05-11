@@ -1,7 +1,39 @@
+/* ---- VARIABLES GÉNÉRALES ---- */
+
+/* Par défaut : thème clair */
+:root {
+  --bg-color: white;
+  --text-color: black;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --button-bg: #0070f3;
+  --button-hover: #005bb5;
+  --error-color: red;
+  --success-color: green;
+}
+
+/* Si l'appareil est en mode sombre */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1e1e1e;
+    --text-color: #f0f0f0;
+    --input-bg: #2c2c2c;
+    --input-border: #555;
+    --button-bg: #3399ff;
+    --button-hover: #267acc;
+    --error-color: #ff6b6b;
+    --success-color: #48e88f;
+  }
+}
+
+/* ---- STYLES DU COMPOSANT ---- */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .title {
@@ -39,9 +71,11 @@
   width: 100%;
   padding: 0.8rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 6px;
   font-size: 1rem;
+  color: var(--text-color);
 }
 
 .textarea {
@@ -50,7 +84,7 @@
 }
 
 .button {
-  background-color: #0070f3;
+  background-color: var(--button-bg);
   color: white;
   padding: 0.9rem 1.5rem;
   border: none;
@@ -66,16 +100,16 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: #005bb5;
+  background-color: var(--button-hover);
 }
 
 .success {
-  color: green;
+  color: var(--success-color);
   margin-bottom: 1rem;
 }
 
 .error {
-  color: red;
+  color: var(--error-color);
   margin-bottom: 0.5rem;
 }
 
@@ -83,7 +117,8 @@
   margin-right: 8px;
 }
 
-/* --- RESPONSIVE DESIGN --- */
+/* ---- RESPONSIVE ---- */
+
 @media (max-width: 768px) {
   .contactContent {
     flex-direction: column;

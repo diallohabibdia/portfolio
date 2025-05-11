@@ -1,0 +1,93 @@
+/* Expérience Module CSS */
+
+/* Mode sombre et clair */
+.bg-dark {
+    background-color: #1f2937;
+  }
+  
+  .bg-light {
+    background-color: #ffffff;
+  }
+  
+  .text-dark {
+    color: #f3f4f6;
+  }
+  
+  .text-light {
+    color: #4b5563;
+  }
+  
+  /* Tabs */
+  .tabButton {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .tabButton:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .tabButton:focus {
+    outline: none;
+  }
+  
+  .tabButtonActive {
+    color: #2563eb;
+    font-weight: bold;
+  }
+  
+  /* Timeline Styles */
+  .timeline {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .timelineLine {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #2563eb;
+    transform: translateX(-50%);
+  }
+  
+  /* Timeline Item */
+  .timelineItem {
+    display: flex;
+    margin: 1.5rem 0;
+    align-items: center;
+    position: relative;
+  }
+  
+  .timelineItemReverse {
+    flex-direction: row-reverse;
+  }
+  
+  .timelineItemContent {
+    padding: 1rem;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+  }
+  
+  .timelineItemContent p {
+    margin: 0;
+  }
+  
+  .timelineItemDot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #2563eb;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  

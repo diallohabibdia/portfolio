@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaGithub } from "react-icons/fa";
+import styles from "./Portfolio.module.css"; // Assurez-vous d'avoir ce fichier CSS pour le style
 
 const projects = [
   {

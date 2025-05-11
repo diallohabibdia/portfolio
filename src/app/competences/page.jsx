@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCode, FaServer, FaMobileAlt, FaDesktop, FaUsers, FaCogs, FaLanguage, FaDatabase, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const skills = [
@@ -76,7 +76,6 @@ const skills = [
       { name: "IntelliJ", level: 80 },
       { name: "Visual Studio", level: 80 },
       { name: "Xcode", level: 80 },
-
     ]
   },
   {
@@ -92,6 +91,23 @@ const skills = [
 
 export default function Skills() {
   const [openSections, setOpenSections] = useState({});
+  const [theme, setTheme] = useState("light");
+
+  // Détection des préférences de couleur du système
+  useEffect(() => {
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDarkScheme ? "dark" : "light");
+
+    const mediaQueryListener = (e) => {
+      setTheme(e.matches ? "dark" : "light");
+    };
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", mediaQueryListener);
+
+    return () => {
+      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", mediaQueryListener);
+    };
+  }, []);
 
   const toggleSection = (index) => {
     setOpenSections((prev) => ({
@@ -101,8 +117,8 @@ export default function Skills() {
   };
 
   return (
-    <section className="text-center py-12 px-6 ">
-      <h2 className="text-3xl font-bold text-gray-900">Savoir-faire et expertise</h2>
+    <section className={`text-center py-12 px-6 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}>
+      <h2 className="text-3xl font-bold">Savoir-faire et expertise</h2>
       <p className="text-gray-500 text-lg mb-8">Mon niveau technique</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">

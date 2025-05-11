@@ -1,0 +1,113 @@
+/* === THÈME PAR DÉFAUT (clair) === */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1a202c;
+    --secondary-text: #4a5568;
+    --border-color: #e2e8f0;
+    --hover-color: #3182ce;
+    --hover-text: #2b6cb0;
+    --image-shadow: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* === THÈME SOMBRE === */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #1a202c;
+      --text-color: #f7fafc;
+      --secondary-text: #a0aec0;
+      --border-color: #2d3748;
+      --hover-color: #63b3ed;
+      --hover-text: #4299e1;
+      --image-shadow: rgba(255, 255, 255, 0.1);
+    }
+  }
+  
+  /* === CONTENEUR PRINCIPAL === */
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* === TITRE === */
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* === SOUS-TITRE === */
+  .subtitle {
+    text-align: center;
+    color: var(--secondary-text);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === ACCORDÉON === */
+  .accordionItem {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+  }
+  
+  /* === BOUTON DE PROJET === */
+  .projectButton {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .projectButton:hover {
+    color: var(--hover-color);
+  }
+  
+  /* === DÉTAILS DU PROJET === */
+  .projectDetails {
+    margin-top: 0.5rem;
+    color: var(--secondary-text);
+    transition: all 0.3s ease;
+  }
+  
+  /* === IMAGES === */
+  .imageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .projectImage {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--image-shadow);
+  }
+  
+  /* === LIEN GITHUB === */
+  .githubLink {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--hover-color);
+    margin-top: 0.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .githubLink:hover {
+    color: var(--hover-text);
+  }
+  
+  .githubIcon {
+    margin-right: 0.5rem;
+  }

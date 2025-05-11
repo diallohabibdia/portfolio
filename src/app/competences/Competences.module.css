@@ -1,102 +1,150 @@
+/* Styles généraux (mode clair par défaut) */
 .skillsSection {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f4f4f4;
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f4f4f4; /* Fond clair */
+  color: #333; /* Texte sombre */
+}
+
+.cvButtonContainer {
+  margin-bottom: 20px;
+}
+
+.cvButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cvButton:hover {
+  background-color: #0056b3; /* Bleu plus foncé au survol */
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skillBox {
+  background: white;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.skillBox:hover {
+  transform: translateY(-5px);
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  font-size: 18px;
+}
+
+.skillTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.skillDetails {
+  padding: 15px;
+}
+
+.skillItem {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.progressBar {
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #007bff;
+}
+
+/* Styles pour le mode sombre */
+@media (prefers-color-scheme: dark) {
+  /* Section générale */
+  .skillsSection {
+      background-color: #2d2d2d; /* Fond sombre */
+      color: #fff; /* Texte blanc */
   }
-  
-  .cvButtonContainer {
-    margin-bottom: 20px;
-  }
-  
+
   .cvButton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.3s ease-in-out;
+      background-color: #0056b3;
+      color: white;
   }
-  
+
   .cvButton:hover {
-    background-color: #0056b3;
+      background-color: #003d80; /* Un bleu plus foncé au survol */
   }
-  
-  .title {
-    font-size: 24px;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .subtitle {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #666;
-  }
-  
-  .skillsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
+
   .skillBox {
-    background: white;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
+      background: #3a3a3a; /* Fond des boîtes sombre */
+      color: #fff; /* Texte blanc dans le mode sombre */
+      box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
   }
-  
-  .skillBox:hover {
-    transform: translateY(-5px);
-  }
-  
+
   .skillHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    cursor: pointer;
-    background: #007bff;
-    color: white;
-    font-size: 18px;
+      background: #0056b3; /* Fond bleu pour l'en-tête */
+      color: white;
   }
-  
-  .skillTitle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .icon {
-    font-size: 20px;
-  }
-  
-  .skillDetails {
-    padding: 15px;
-  }
-  
-  .skillItem {
-    text-align: left;
-    margin-bottom: 10px;
-  }
-  
+
   .progressBar {
-    height: 10px;
-    background: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
+      background: #555; /* Barre de progression plus sombre */
   }
-  
+
   .progressFill {
-    height: 100%;
-    background: #007bff;
+      background: #007bff; /* Remplissage bleu de la barre */
   }
-  
+
+  /* Boutons et liens */
+  .cvButton {
+      background-color: #0056b3;
+      color: white;
+  }
+
+  .cvButton:hover {
+      background-color: #003d80;
+  }
+}
