@@ -1,93 +1,68 @@
-/* Expérience Module CSS */
-
-/* Mode sombre et clair */
-.bg-dark {
-    background-color: #1f2937;
+/* Couleurs mode clair */
+.bgLight {
+    background-color: #f9f9f9;
   }
   
-  .bg-light {
-    background-color: #ffffff;
+  .textLight {
+    color: #1a1a1a;
   }
   
-  .text-dark {
-    color: #f3f4f6;
+  /* Couleurs mode sombre */
+  .bgDark {
+    background-color: #1a1a1a;
   }
   
-  .text-light {
-    color: #4b5563;
+  .textDark {
+    color: #f9f9f9;
   }
   
-  /* Tabs */
-  .tabButton {
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .tabButton:hover {
-    background-color: #e5e7eb;
-  }
-  
-  .tabButton:focus {
-    outline: none;
-  }
-  
+  /* Bouton actif pour l’onglet */
   .tabButtonActive {
-    color: #2563eb;
+    background-color: #2563eb; /* bleu */
+    color: white;
     font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
   
-  /* Timeline Styles */
+  /* Timeline */
   .timeline {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
   }
   
   .timelineLine {
-    content: "";
     position: absolute;
     left: 50%;
     top: 0;
-    width: 2px;
-    height: 100%;
-    background-color: #2563eb;
+    bottom: 0;
+    width: 4px;
+    background-color: #ccc;
     transform: translateX(-50%);
   }
   
-  /* Timeline Item */
   .timelineItem {
-    display: flex;
-    margin: 1.5rem 0;
-    align-items: center;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
   }
   
   .timelineItemReverse {
     flex-direction: row-reverse;
   }
   
-  .timelineItemContent {
-    padding: 1rem;
-    background-color: #2563eb;
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 45%;
-  }
-  
-  .timelineItemContent p {
-    margin: 0;
-  }
-  
   .timelineItemDot {
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 16px;
     height: 16px;
-    background-color: #2563eb;
+    background-color: #2563eb; /* bleu */
     border-radius: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    border: 3px solid white;
   }
   
