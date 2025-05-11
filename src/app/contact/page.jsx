@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import styles from "./Contact.module.css";
-import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 export default function Contact() {
   const {
@@ -57,15 +57,16 @@ export default function Contact() {
         <div className={styles.contactForm}>
           <h3 className={styles.subtitle}>Envoyez-moi un courriel</h3>
 
-          {messageSent && <p className={styles.success}>Message envoyé avec succès ! ✅</p>}
-          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+          {messageSent && <p className={styles.success}><FaCheckCircle /> Message envoyé avec succès! ✅</p>}
+          {errorMessage && <p className={styles.error}><FaTimesCircle /> {errorMessage}</p>}
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
               placeholder="Votre nom*"
-              {...register("name", { required: "Le nom est requis." })}
+              {...register("name", { required: "Veuillez entrer votre nom." })}
               className={styles.input}
+              aria-label="Nom"
             />
             {errors.name && <p className={styles.error}>{errors.name.message}</p>}
 
@@ -74,20 +75,23 @@ export default function Contact() {
               placeholder="Objet du message"
               {...register("subject")}
               className={styles.input}
+              aria-label="Objet du message"
             />
 
             <input
               type="email"
               placeholder="Votre adresse courriel*"
-              {...register("email", { required: "L'email est requis." })}
+              {...register("email", { required: "Veuillez entrer votre adresse courriel." })}
               className={styles.input}
+              aria-label="Email"
             />
             {errors.email && <p className={styles.error}>{errors.email.message}</p>}
 
             <textarea
               placeholder="Message*"
-              {...register("message", { required: "Le message est requis." })}
+              {...register("message", { required: "Veuillez entrer votre message." })}
               className={styles.textarea}
+              aria-label="Message"
             ></textarea>
             {errors.message && <p className={styles.error}>{errors.message.message}</p>}
 

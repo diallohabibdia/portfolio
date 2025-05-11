@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FaGraduationCap, FaBriefcase, FaCertificate } from "react-icons/fa";
-import styles from "./Experience.module.css"; // Assurez-vous d'importer ce fichier CSS pour le style
-
+import styles from './Experience.module.css';
 const Experience = () => {
   const [activeTab, setActiveTab] = useState("education");
   const [darkMode, setDarkMode] = useState(false);
