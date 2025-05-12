@@ -1,30 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FaGraduationCap, FaBriefcase, FaCertificate } from "react-icons/fa";
-import styles from './Experience.module.css';
+import styles from "./Experience.module.css";
+
 const Experience = () => {
   const [activeTab, setActiveTab] = useState("education");
   const [darkMode, setDarkMode] = useState(false);
 
-  // Détection du mode sombre ou clair via l'API matchMedia
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    // Fonction qui met à jour l'état du mode sombre
-    const handleChange = (e) => {
-      setDarkMode(e.matches);
-    };
-
-    // Écoute le changement de préférence
+    const handleChange = (e) => setDarkMode(e.matches);
     mediaQuery.addEventListener("change", handleChange);
-
-    // Définir l'état initial en fonction du mode actuel
     setDarkMode(mediaQuery.matches);
-
-    // Nettoyage du listener lors de la destruction du composant
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   const tabs = [
@@ -52,7 +40,7 @@ const Experience = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center px-6 py-10 ${darkMode ? styles.bgDark : styles.bgLight} ${darkMode ? styles.textDark : styles.textLight}`}>
+    <div className={`flex flex-col items-center justify-center px-6 py-10 ${darkMode ? styles.textDark : styles.textLight}`}>
       <h1 className="text-3xl font-bold text-center">Expérience et études</h1>
       <p className="text-lg text-gray-500 mb-6">Mon parcours personnel</p>
 

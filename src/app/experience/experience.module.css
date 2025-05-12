@@ -1,17 +1,9 @@
 /* Couleurs mode clair */
-.bgLight {
-    background-color: #f9f9f9;
-  }
-  
-  .textLight {
+.textLight {
     color: #1a1a1a;
   }
   
   /* Couleurs mode sombre */
-  .bgDark {
-    background-color: #1a1a1a;
-  }
-  
   .textDark {
     color: #f9f9f9;
   }
