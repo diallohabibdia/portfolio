@@ -18,24 +18,24 @@ export default function Contact() {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    setErrorMessage(""); // Réinitialiser le message d'erreur
+    setErrorMessage("");
     try {
       const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,  // Service ID depuis l'env
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, // Template ID depuis l'env
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
-          from_name: data.name,        // Nom de l'expéditeur
-          from_email: data.email,      // Email de l'expéditeur
-          subject: data.subject,       // Sujet du message
-          message: data.message,       // Message de l'expéditeur
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID // User ID (clé publique) depuis l'env
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
       );
 
       console.log("SUCCESS!", result.text);
       setMessageSent(true);
-      reset(); // Réinitialiser les champs du formulaire
-      setTimeout(() => setMessageSent(false), 5000); // Message de succès disparaît après 5 secondes
+      reset();
+      setTimeout(() => setMessageSent(false), 5000);
     } catch (error) {
       console.error("FAILED...", error);
       setErrorMessage("Erreur d’envoi du message. Veuillez réessayer plus tard.");
