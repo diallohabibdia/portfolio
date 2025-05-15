@@ -1,6 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaCode, FaServer, FaMobileAlt, FaDesktop, FaUsers, FaCogs, FaLanguage, FaDatabase, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import {
+  FaCode,
+  FaServer,
+  FaMobileAlt,
+  FaDesktop,
+  FaUsers,
+  FaCogs,
+  FaLanguage,
+  FaDatabase,
+  FaChevronDown,
+  FaChevronUp,
+} from "react-icons/fa";
+import styles from './Competences.module.css'; // Import du CSS Module
 
 const skills = [
   {
@@ -12,8 +24,8 @@ const skills = [
       { name: "CSS", level: 80 },
       { name: "JavaScript", level: 90 },
       { name: "React.js", level: 80 },
-      { name: "Next.js", level: 80 }
-    ]
+      { name: "Next.js", level: 80 },
+    ],
   },
   {
     title: "Développeur Backend",
@@ -22,8 +34,8 @@ const skills = [
     details: [
       { name: "Node.js (Express framework)", level: 85 },
       { name: "Python (Django framework)", level: 80 },
-      { name: "PHP", level: 55 }
-    ]
+      { name: "PHP", level: 55 },
+    ],
   },
   {
     title: "Développeur application pour mobile",
@@ -32,8 +44,8 @@ const skills = [
     details: [
       { name: "Android - Java/Kotlin", level: 90 },
       { name: "React Native", level: 80 },
-      { name: "Swift", level: 80 }
-    ]
+      { name: "Swift", level: 80 },
+    ],
   },
   {
     title: "Développeur application de bureau",
@@ -42,7 +54,7 @@ const skills = [
     details: [
       { name: "C# - WPF", level: 85 },
       { name: "Java - Swing", level: 80 },
-    ]
+    ],
   },
   {
     title: "Base de données",
@@ -52,8 +64,8 @@ const skills = [
       { name: "MySQL", level: 85 },
       { name: "SQL Server", level: 80 },
       { name: "MongoDB", level: 75 },
-      { name: "Cassandra", level: 70 }
-    ]
+      { name: "Cassandra", level: 70 },
+    ],
   },
   {
     title: "Travail collaboratif",
@@ -62,8 +74,8 @@ const skills = [
     details: [
       { name: "Git", level: 80 },
       { name: "SCRUM", level: 80 },
-      { name: "Github", level: 80 }
-    ]
+      { name: "Github", level: 80 },
+    ],
   },
   {
     title: "Logiciels",
@@ -76,7 +88,7 @@ const skills = [
       { name: "IntelliJ", level: 80 },
       { name: "Visual Studio", level: 80 },
       { name: "Xcode", level: 80 },
-    ]
+    ],
   },
   {
     title: "Langues",
@@ -85,57 +97,63 @@ const skills = [
     details: [
       { name: "Français - Courant", level: 100 },
       { name: "Anglais - Intermédiaire", level: 40 },
-    ]
-  }
+    ],
+  },
 ];
 
 export default function Skills() {
   const [openSections, setOpenSections] = useState({});
   const [theme, setTheme] = useState("light");
 
-  // Détection des préférences de couleur du système
   useEffect(() => {
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setTheme(prefersDarkScheme ? "dark" : "light");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
 
-    const mediaQueryListener = (e) => {
-      setTheme(e.matches ? "dark" : "light");
-    };
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e) => setTheme(e.matches ? "dark" : "light");
+    mediaQuery.addEventListener("change", handler);
 
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", mediaQueryListener);
-
-    return () => {
-      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", mediaQueryListener);
-    };
+    return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
   const toggleSection = (index) => {
     setOpenSections((prev) => ({
       ...prev,
-      [index]: !prev[index]
+      [index]: !prev[index],
     }));
   };
 
   return (
-    <section className={`text-center py-12 px-6 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}>
-      <h2 className="text-3xl font-bold">Savoir-faire et expertise</h2>
-      <p className="text-gray-500 text-lg mb-8">Mon niveau technique</p>
+    <section className={`${styles.section} ${theme === "dark" ? "dark" : "light"}`}>
+      <h2 className={`${styles.title} ${theme === "dark" ? "text-white" : "text-black"}`}>
+        Savoir-faire et expertise
+      </h2>
+      <p className={`${styles.subtitle} ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+        Mon niveau technique
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+      <div className={styles.grid}>
         {skills.map((skill, index) => (
-          <div key={index} className="bg-white p-4 rounded-lg shadow-md">
-            <div 
-              className="flex items-center justify-between cursor-pointer"
+          <div
+            key={index}
+            className={`${styles.card} ${theme === "dark" ? styles.cardDark : styles.cardLight}`}
+          >
+            <div
+              className={styles.header}
               onClick={() => toggleSection(index)}
             >
-              <div className="flex items-center gap-3">
-                <span className="text-blue-600 text-2xl">{skill.icon}</span>
+              <div className={styles.iconTitle}>
+                <span className={`text-2xl ${theme === "dark" ? "text-blue-400" : "text-blue-600"}`}>
+                  {skill.icon}
+                </span>
                 <div>
                   <h3 className="text-lg font-semibold">{skill.title}</h3>
-                  <p className="text-gray-500">{skill.experience}</p>
+                  <p className={`${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+                    {skill.experience}
+                  </p>
                 </div>
               </div>
-              <span className="text-gray-600 text-lg">
+              <span className={`${theme === "dark" ? "text-white" : "text-gray-600"} text-lg`}>
                 {openSections[index] ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </div>
@@ -146,12 +164,18 @@ export default function Skills() {
                   <li key={i} className="mb-3">
                     <span className="block font-medium">{detail.name}</span>
                     {detail.level !== undefined && (
-                      <div className="relative w-full bg-gray-300 rounded-full h-2.5">
+                      <div
+                        className={`relative w-full rounded-full h-2.5 ${theme === "dark" ? "bg-gray-700" : "bg-gray-300"}`}
+                      >
                         <div
                           className="bg-blue-600 h-2.5 rounded-full transition-all duration-700"
                           style={{ width: `${detail.level}%` }}
                         ></div>
-                        <span className="absolute right-0 top-0 text-xs font-semibold text-gray-700">{detail.level}%</span>
+                        <span
+                          className={`absolute right-0 top-0 text-xs font-semibold ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`}
+                        >
+                          {detail.level}%
+                        </span>
                       </div>
                     )}
                   </li>

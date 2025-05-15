@@ -1,150 +1,121 @@
-/* Styles généraux (mode clair par défaut) */
-.skillsSection {
+.section {
   text-align: center;
-  padding: 50px 20px;
-  background-color: #f4f4f4; /* Fond clair */
-  color: #333; /* Texte sombre */
-}
-
-.cvButtonContainer {
-  margin-bottom: 20px;
-}
-
-.cvButton {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.cvButton:hover {
-  background-color: #0056b3; /* Bleu plus foncé au survol */
+  padding: 3rem 1.5rem;
 }
 
 .title {
-  font-size: 24px;
-  margin-bottom: 5px;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .subtitle {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #666;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
 }
 
-.skillsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 768px;
+  margin: 0 auto;
 }
 
-.skillBox {
-  background: white;
-  width: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.skillBox:hover {
-  transform: translateY(-5px);
+.card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
-.skillHeader {
+.cardDark {
+  background-color: #111827; /* gray-900 */
+  color: #fff;
+}
+
+.cardLight {
+  background-color: #fff;
+  color: #000;
+}
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  cursor: pointer;
-  background: #007bff;
-  color: white;
-  font-size: 18px;
 }
 
-.skillTitle {
+.iconTitle {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.75rem;
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
-.skillDetails {
-  padding: 15px;
+.skillName {
+  font-weight: 600;
 }
 
-.skillItem {
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-.progressBar {
+.barContainer {
+  position: relative;
+  width: 100%;
   height: 10px;
-  background: #ddd;
-  border-radius: 5px;
-  overflow: hidden;
+  border-radius: 9999px;
+  background-color: #e5e7eb; /* light mode gray-300 */
+  margin-top: 0.25rem;
 }
 
-.progressFill {
-  height: 100%;
-  background: #007bff;
+.bar {
+  height: 10px;
+  border-radius: 9999px;
+  background-color: #2563eb; /* blue-600 */
+  transition: width 0.7s ease;
 }
 
-/* Styles pour le mode sombre */
-@media (prefers-color-scheme: dark) {
-  /* Section générale */
-  .skillsSection {
-      background-color: #2d2d2d; /* Fond sombre */
-      color: #fff; /* Texte blanc */
-  }
+.barLabel {
+  position: absolute;
+  top: -1.25rem;
+  right: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
 
-  .cvButton {
-      background-color: #0056b3;
-      color: white;
-  }
+.dark .section {
+  background-color: #000;
+  color: #fff;
+}
 
-  .cvButton:hover {
-      background-color: #003d80; /* Un bleu plus foncé au survol */
-  }
+.dark .subtitle {
+  color: #9ca3af; /* gray-400 */
+}
 
-  .skillBox {
-      background: #3a3a3a; /* Fond des boîtes sombre */
-      color: #fff; /* Texte blanc dans le mode sombre */
-      box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-  }
+.dark .card {
+  background-color: #111827; /* gray-900 */
+  color: #fff;
+}
 
-  .skillHeader {
-      background: #0056b3; /* Fond bleu pour l'en-tête */
-      color: white;
-  }
+.dark .barContainer {
+  background-color: #374151; /* gray-700 */
+}
 
-  .progressBar {
-      background: #555; /* Barre de progression plus sombre */
-  }
+.dark .barLabel {
+  color: #e5e7eb; /* gray-200 */
+}
 
-  .progressFill {
-      background: #007bff; /* Remplissage bleu de la barre */
-  }
+.light .card {
+  background-color: #fff;
+  color: #000;
+}
 
-  /* Boutons et liens */
-  .cvButton {
-      background-color: #0056b3;
-      color: white;
-  }
-
-  .cvButton:hover {
-      background-color: #003d80;
-  }
+.light .barLabel {
+  color: #374151; /* gray-700 */
 }

@@ -49,7 +49,7 @@
   .timelineItemDot {
     width: 16px;
     height: 16px;
-    background-color: #000000; /* bleu */
+    background-color: blue; 
     border-radius: 50%;
     position: absolute;
     left: 50%;

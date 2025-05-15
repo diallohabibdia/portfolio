@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp, FaGithub } from "react-icons/fa";
 import styles from "./Portfolio.module.css"; // Assurez-vous d'avoir ce fichier CSS pour le style
 
+// Liste des projets
 const projects = [
   {
     title: "Site web pour un hôpital",
@@ -92,58 +93,88 @@ const projects = [
   }
 ];
 
+// Composant pour chaque carte de projet
+const ProjectCard = ({ project, index, openIndex, toggleAccordion }) => (
+  <div key={index} className={`${styles.projectCard} border-b border-gray-300 py-4`}>
+    <button
+      aria-expanded={openIndex === index ? "true" : "false"}
+      aria-controls={`project-${index}`}
+      className={`${styles.projectButton} w-full flex justify-between items-center text-left font-semibold text-lg transition-all duration-300 hover:text-blue-600`}
+      onClick={() => toggleAccordion(index)}
+    >
+      {project.title}
+      {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+    </button>
+
+    {openIndex === index && (
+      <div id={`project-${index}`} className="mt-2">
+        <p className="font-semibold">Technologies : {project.technologies}</p>
+        <p className="font-semibold">Logiciels utilisés : {project.logiciels}</p>
+        <p>{project.description}</p>
+
+        {/* Affichage des images */}
+        <div className="my-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {project.image.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`${project.title} - image ${i + 1}`}
+              className={`${styles.projectImage} w-full rounded-lg shadow-md`}
+            />
+          ))}
+        </div>
+
+        {/* Lien GitHub */}
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${styles.githubLink} flex items-center text-blue-500 hover:text-blue-700 font-semibold mt-2`}
+        >
+          <FaGithub className="mr-2" /> Voir le code sur GitHub
+        </a>
+      </div>
+    )}
+  </div>
+);
+
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [theme, setTheme] = useState("light"); // État du thème
+
+  // Fonction pour détecter le thème initial et le mettre à jour
+  useEffect(() => {
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDarkScheme ? "dark" : "light");
+
+    const mediaQueryListener = (event) => {
+      setTheme(event.matches ? "dark" : "light");
+    };
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", mediaQueryListener);
+
+    return () => {
+      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", mediaQueryListener);
+    };
+  }, []);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center text-gray-900">Portfolio</h2>
-      <p className="text-center text-gray-600 mb-6">Mes projets récents</p>
+    <div className={`${styles.portfolioContainer} max-w-3xl mx-auto p-6 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-gray-900"}`}>
+      <h2 className={`${styles.title} text-3xl font-bold text-center`}>Portfolio</h2>
+      <p className={`${styles.subtitle} text-center text-gray-600 mb-6`}>Mes projets récents</p>
 
       {projects.map((project, index) => (
-        <div key={index} className="border-b border-gray-300 py-4">
-          <button
-            className="w-full flex justify-between items-center text-left font-semibold text-lg transition-all duration-300 hover:text-blue-600"
-            onClick={() => toggleAccordion(index)}
-          >
-            {project.title}
-            {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-          </button>
-
-          {openIndex === index && (
-            <div className="mt-2 text-gray-700 transition-all duration-300">
-              <p className="font-semibold">Technologies : {project.technologies}</p>
-              <p className="font-semibold">Logiciels utilisés : {project.logiciels}</p>
-              <p>{project.description}</p>
-
-              {/* Affichage des images */}
-              <div className="my-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {project.image.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`${project.title} - image ${i + 1}`}
-                    className="w-full rounded-lg shadow-md"
-                  />
-                ))}
-              </div>
-
-              {/* Lien GitHub */}
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-blue-500 hover:text-blue-700 font-semibold mt-2"
-              >
-                <FaGithub className="mr-2" /> Voir le code sur GitHub
-              </a>
-            </div>
-          )}
-        </div>
+        <ProjectCard 
+          key={index} 
+          project={project} 
+          index={index} 
+          openIndex={openIndex} 
+          toggleAccordion={toggleAccordion} 
+        />
       ))}
     </div>
   );
