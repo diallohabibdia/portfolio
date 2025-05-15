@@ -19,7 +19,6 @@
 
 @media (prefers-color-scheme: dark) {
   .container {
-    --bg-color: #2e2e2e; /* Couleur de fond adoucie */
     --text-color: #ffffff;
     --border-color: #444;
     --button-bg: #0a84ff;
