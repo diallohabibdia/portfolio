@@ -1,6 +1,4 @@
-/* Thème clair */
 .container {
-  
   --text-color: #1a1a1a;
   --border-color: #ccc;
   --input-focus-color: #0070f3;
@@ -13,7 +11,7 @@
   padding: 40px;
   max-width: 1000px;
   margin: 0 auto;
-  background-color: var(--bg-color);
+  background-color: var(--bg-color, #ffffff);
   color: var(--text-color);
   border-radius: 16px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
@@ -21,7 +19,7 @@
 
 @media (prefers-color-scheme: dark) {
   .container {
-    --bg-color: #1e1e1e;
+    --bg-color: #2e2e2e; /* Couleur de fond adoucie */
     --text-color: #ffffff;
     --border-color: #444;
     --button-bg: #0a84ff;
