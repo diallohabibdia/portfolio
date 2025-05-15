@@ -12,6 +12,7 @@ export default function Contact() {
     formState: { errors },
     reset,
   } = useForm();
+
   const [messageSent, setMessageSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -50,15 +51,29 @@ export default function Contact() {
 
       <div className={styles.contactContent}>
         <div className={styles.contactInfo}>
-          <p><FaPhoneAlt className={styles.icon} /> <strong>Appeler</strong><br />+1 581-447-5890</p>
-          <p><FaEnvelope className={styles.icon} /> <strong>Courriel</strong><br />diallohabibdia@gmail.com</p>
+          <p>
+            <FaPhoneAlt className={styles.icon} /> <strong>Appeler</strong>
+            <br />+1 581-447-5890
+          </p>
+          <p>
+            <FaEnvelope className={styles.icon} /> <strong>Courriel</strong>
+            <br />diallohabibdia@gmail.com
+          </p>
         </div>
 
         <div className={styles.contactForm}>
           <h3 className={styles.subtitle}>Envoyez-moi un courriel</h3>
 
-          {messageSent && <p className={styles.success}><FaCheckCircle /> Message envoyé avec succès! ✅</p>}
-          {errorMessage && <p className={styles.error}><FaTimesCircle /> {errorMessage}</p>}
+          {messageSent && (
+            <p className={styles.success}>
+              <FaCheckCircle /> Message envoyé avec succès! ✅
+            </p>
+          )}
+          {errorMessage && (
+            <p className={styles.error}>
+              <FaTimesCircle /> {errorMessage}
+            </p>
+          )}
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
@@ -75,7 +90,7 @@ export default function Contact() {
               placeholder="Objet du message"
               {...register("subject")}
               className={styles.input}
-              aria-label="Objet du message"
+              aria-label="Objet"
             />
 
             <input
@@ -92,7 +107,7 @@ export default function Contact() {
               {...register("message", { required: "Veuillez entrer votre message." })}
               className={styles.textarea}
               aria-label="Message"
-            ></textarea>
+            />
             {errors.message && <p className={styles.error}>{errors.message.message}</p>}
 
             <button type="submit" className={styles.button} disabled={loading}>
