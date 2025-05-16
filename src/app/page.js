@@ -88,39 +88,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center text-gray-900 dark:text-white bg-white dark:bg-gray-900 transition-colors duration-300">
-      <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-lg py-4 px-8 flex justify-between items-center z-50 transition-all">
-        <Image src="/images/monLogo.png" alt="Logo" width={100} height={50} />
-        <div className="flex gap-8">
-          {sections.map((id) => (
-            <button
-              key={id}
-              onClick={() => scrollToSection(id)}
-              className={`transition font-medium ${
-                activeSection === id
-                  ? "text-blue-600 border-b-2 border-blue-600"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600"
-              }`}
-            >
-              {translations[language][id]}
-            </button>
-          ))}
-        </div>
-        <div className="flex items-center gap-3">
-          <FaGlobe
-            size={20}
-            className="cursor-pointer"
-            onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
-          />
-          <select
-            onChange={(e) => setLanguage(e.target.value)}
-            value={language}
-            className="border rounded p-1 bg-white dark:bg-gray-700 text-black dark:text-white"
-          >
-            <option value="fr">FR</option>
-            <option value="en">EN</option>
-          </select>
-        </div>
-      </nav>
+      
 
       {/* SECTION ACCUEIL */}
       <section

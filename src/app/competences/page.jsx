@@ -12,7 +12,8 @@ import {
   FaChevronDown,
   FaChevronUp,
 } from "react-icons/fa";
-import styles from './Competences.module.css'; // Import du CSS Module
+import styles from './Competences.module.css';
+
 
 const skills = [
   {
@@ -124,26 +125,36 @@ export default function Skills() {
   };
 
   return (
-    <section className={`${styles.section} ${theme === "dark" ? "dark" : "light"}`}>
-      <h2 className={`${styles.title} ${theme === "dark" ? "text-white" : "text-black"}`}>
+    <section
+      className={`text-center py-12 px-6 ${
+        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      <h2 className={`text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>
         Savoir-faire et expertise
       </h2>
-      <p className={`${styles.subtitle} ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+      <p className={`text-lg mb-8 ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
         Mon niveau technique
       </p>
 
-      <div className={styles.grid}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
         {skills.map((skill, index) => (
           <div
             key={index}
-            className={`${styles.card} ${theme === "dark" ? styles.cardDark : styles.cardLight}`}
+            className={`p-4 rounded-lg shadow-md transition-colors ${
+              theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
+            }`}
           >
             <div
-              className={styles.header}
+              className="flex items-center justify-between cursor-pointer"
               onClick={() => toggleSection(index)}
             >
-              <div className={styles.iconTitle}>
-                <span className={`text-2xl ${theme === "dark" ? "text-blue-400" : "text-blue-600"}`}>
+              <div className="flex items-center gap-3">
+                <span
+                  className={`text-2xl ${
+                    theme === "dark" ? "text-blue-400" : "text-blue-600"
+                  }`}
+                >
                   {skill.icon}
                 </span>
                 <div>
@@ -165,14 +176,18 @@ export default function Skills() {
                     <span className="block font-medium">{detail.name}</span>
                     {detail.level !== undefined && (
                       <div
-                        className={`relative w-full rounded-full h-2.5 ${theme === "dark" ? "bg-gray-700" : "bg-gray-300"}`}
+                        className={`relative w-full rounded-full h-2.5 ${
+                          theme === "dark" ? "bg-gray-700" : "bg-gray-300"
+                        }`}
                       >
                         <div
                           className="bg-blue-600 h-2.5 rounded-full transition-all duration-700"
                           style={{ width: `${detail.level}%` }}
                         ></div>
                         <span
-                          className={`absolute right-0 top-0 text-xs font-semibold ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`}
+                          className={`absolute right-0 top-0 text-xs font-semibold ${
+                            theme === "dark" ? "text-gray-200" : "text-gray-700"
+                          }`}
                         >
                           {detail.level}%
                         </span>

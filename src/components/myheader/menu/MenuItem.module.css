@@ -1,22 +1,26 @@
-/* MenuItem.module.css */
-
-.menuItem {
-	padding: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s;
+.mobileMenuItem {
+	list-style: none;
+	margin-bottom: 1rem;
   }
   
-  .menuItem a {
+  .mobileMenuLink {
+	display: block;
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	font-weight: 500;
+	color: #333;
 	text-decoration: none;
-	color: inherit;
+	transition: background-color 0.2s, color 0.2s;
   }
   
-  .menuItem:hover {
-	background-color: rgba(0, 0, 0, 0.1);
+  .mobileMenuLink:hover {
+	background-color: #e0e0e0;
+	color: #000;
   }
   
-  .active {
-	background-color: #4c35f9; /* Exemple de couleur de fond pour l'élément actif */
-	color: white; /* Couleur du texte de l'élément actif */
+  /* Style pour l'élément actif */
+  .activeLink {
+	background-color: #2563eb; /* blue-600 */
+	color: #fff;
   }
   

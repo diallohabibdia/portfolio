@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Menu from "./menu/Menu";
 import styles from "./Myheader.module.css";
@@ -8,11 +8,11 @@ const Myheader = () => {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && activeSection !== entry.target.id) {
             setActiveSection(entry.target.id);
           }
         });
@@ -25,10 +25,14 @@ const Myheader = () => {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, []);
+  }, [activeSection]);
 
   return (
-    <header className={styles.Myheader}>
+    <header
+      className={`${styles.Myheader} ${
+        activeSection === "accueil" ? styles.homeHeader : styles.scrolledHeader
+      }`}
+    >
       <Menu activeSection={activeSection} />
     </header>
   );
